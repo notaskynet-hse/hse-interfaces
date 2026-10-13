@@ -5,10 +5,7 @@
 #include <memory>
 #include <vector>
 
-// Список доступных форматов. Из него заполняются выпадающие списки окна,
-// поэтому новый формат достаточно добавить в createDefault().
-class FormatRegistry
-{
+class FormatRegistry {
 public:
     static FormatRegistry createDefault();
 

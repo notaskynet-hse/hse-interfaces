@@ -6,15 +6,13 @@
 
 class DataFormat;
 
-// Окно, показывающее данные одного направления из DataHistory в выбранном формате.
-class HistoryView : public QPlainTextEdit
-{
+class HistoryView : public QPlainTextEdit {
     Q_OBJECT
 
 public:
     enum class Layout {
-        Stream,     // порции подряд, как пришли (приём)
-        Lines       // каждая порция с новой строки (передача)
+        Stream, // приём: порции подряд
+        Lines   // передача: каждая порция с новой строки
     };
 
     HistoryView(const DataHistory *history, Direction direction, Layout layout,

@@ -6,13 +6,13 @@
 #include <QMainWindow>
 #include <QSerialPort>
 
+class FormatValidator;
 class HistoryView;
 class QComboBox;
 class QLineEdit;
 class QPushButton;
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
@@ -32,6 +32,7 @@ private:
     const DataFormat *formatOf(const QComboBox *box) const;
     QString selectedPortName() const;
     void updateControls();
+    void updateInputHint();
 
     QSerialPort m_port;
     FormatRegistry m_formats = FormatRegistry::createDefault();
@@ -43,8 +44,8 @@ private:
     QComboBox *m_inputFormatBox;
     QPushButton *m_refreshButton;
     QPushButton *m_openButton;
-    QPushButton *m_sendButton;
     QLineEdit *m_input;
+    FormatValidator *m_inputValidator;
     HistoryView *m_rxView;
     HistoryView *m_txView;
 };

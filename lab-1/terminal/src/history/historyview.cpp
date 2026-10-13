@@ -9,8 +9,7 @@ HistoryView::HistoryView(const DataHistory *history, Direction direction, Layout
     : QPlainTextEdit(parent)
     , m_history(history)
     , m_direction(direction)
-    , m_layout(layout)
-{
+    , m_layout(layout) {
     setReadOnly(true);
     setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 
@@ -18,14 +17,12 @@ HistoryView::HistoryView(const DataHistory *history, Direction direction, Layout
     connect(history, &DataHistory::cleared, this, &HistoryView::rebuild);
 }
 
-void HistoryView::setFormat(const DataFormat *format)
-{
+void HistoryView::setFormat(const DataFormat *format) {
     m_format = format;
     rebuild();
 }
 
-void HistoryView::appendChunk(const DataChunk &chunk)
-{
+void HistoryView::appendChunk(const DataChunk &chunk) {
     if (!m_format || chunk.direction != m_direction)
         return;
 
@@ -35,8 +32,7 @@ void HistoryView::appendChunk(const DataChunk &chunk)
     m_empty = false;
 }
 
-void HistoryView::rebuild()
-{
+void HistoryView::rebuild() {
     QString text;
     m_empty = true;
     if (m_format) {
@@ -51,8 +47,7 @@ void HistoryView::rebuild()
     moveCursor(QTextCursor::End);
 }
 
-QString HistoryView::render(const DataChunk &chunk, bool first) const
-{
+QString HistoryView::render(const DataChunk &chunk, bool first) const {
     const QString text = m_format->toText(chunk.data);
     return (m_layout == Layout::Lines && !first) ? '\n' + text : text;
 }

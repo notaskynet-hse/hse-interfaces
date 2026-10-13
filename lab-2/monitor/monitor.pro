@@ -5,13 +5,20 @@ CONFIG += c++17
 TARGET = monitor
 TEMPLATE = app
 
-INCLUDEPATH += qcustomplot
+INCLUDEPATH += \
+    src \
+    qcustomplot
 
 SOURCES += \
-    main.cpp \
-    mainwindow.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp \
+    src/sampleparser.cpp \
+    src/adcplot.cpp \
     qcustomplot/qcustomplot.cpp
 
 HEADERS += \
-    mainwindow.h \
+    src/mainwindow.h \
+    src/sampleparser.h \
+    src/adcplot.h \
+    src/adc.h \
     qcustomplot/qcustomplot.h

@@ -3,11 +3,10 @@
 #include <QApplication>
 #include <QCommandLineParser>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    // monitor --port /dev/ttys003 --baud 19200 - сразу открыть порт.
+    // monitor --port /dev/ttys003 --baud 19200 - открыть порт при запуске.
     QCommandLineParser parser;
     parser.addHelpOption();
     parser.addOption({"port", "Serial port to open on start.", "name"});
